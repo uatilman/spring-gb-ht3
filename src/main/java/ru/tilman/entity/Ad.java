@@ -6,6 +6,7 @@ import javax.persistence.ManyToOne;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import java.util.Objects;
 
 /**
  * Для объявления: идентификатор, категория, название, содержание, номер телефона.
@@ -81,8 +82,28 @@ public class Ad extends AbstractEntity {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Ad)) return false;
+        if (!super.equals(o)) return false;
+        Ad ad = (Ad) o;
+        return Objects.equals(name, ad.name) &&
+                Objects.equals(content, ad.content) &&
+                Objects.equals(category, ad.category) &&
+                Objects.equals(company, ad.company) &&
+                Objects.equals(phoneNumber, ad.phoneNumber);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(super.hashCode(), name, content, category, company, phoneNumber);
+    }
+
+    @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Ad{");
+        sb.append(super.toString());
         sb.append("name='").append(name).append('\'');
         sb.append(", content='").append(content).append('\'');
         sb.append(", category=").append(category);
@@ -91,4 +112,6 @@ public class Ad extends AbstractEntity {
         sb.append('}');
         return sb.toString();
     }
+
+
 }

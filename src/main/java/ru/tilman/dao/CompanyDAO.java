@@ -1,7 +1,7 @@
 package ru.tilman.dao;
 
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Service;
 
 import ru.tilman.entity.Company;
 
@@ -12,28 +12,17 @@ import java.util.List;
 @Transactional
 public class CompanyDAO extends AbstractDAO {
 
-    public void persist(Company company) {
-        if (company == null) return;
-        em.persist(company);
-    }
-
-    public void merge(Company company) {
-        if (company == null) return;
-        em.merge(company);
+    public Company getCompanyById(String id) {
+        if (id == null) return null;
+        return em.find(Company.class, id);
     }
 
     public List<Company> getCompanyList() {
         return em.createQuery("SELECT el FROM Company el", Company.class).getResultList();
     }
 
-    public void persistCompanyList(List<Company> companyList) {
-        if (companyList == null) return;
-
-        for (Company company : companyList) {
-            if (company == null) continue;
-            em.persist(company);
-        }
-
+    public void removeById(String id) {
+        removeById(id, Company.class);
     }
 
 }

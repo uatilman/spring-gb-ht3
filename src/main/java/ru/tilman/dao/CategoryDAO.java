@@ -1,7 +1,7 @@
 package ru.tilman.dao;
 
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Service;
 
 import ru.tilman.entity.Category;
 
@@ -12,23 +12,17 @@ import java.util.List;
 @Transactional
 public class CategoryDAO extends AbstractDAO {
 
-    public void persist(Category category) {
-        if (category == null) return;
-        em.persist(category);
+    public Category getCategoryById(String id) {
+        if (id == null) return null;
+        return em.find(Category.class, id);
     }
 
-    public void merge(Category category) {
-        if (category == null) return;
-        em.merge(category);
+    public List<Category> getCategoryList() {
+        return em.createQuery("SELECT el FROM Category el", Category.class).getResultList();
     }
 
-    public void  persistCategoryList(List<Category> categoryList) {
-        if (categoryList == null) return;
-
-        for (Category category : categoryList) {
-            if (category == null) continue;
-            em.persist(category);
-        }
+    public void removeById(String id) {
+        removeById(id, Category.class);
     }
 
 }
