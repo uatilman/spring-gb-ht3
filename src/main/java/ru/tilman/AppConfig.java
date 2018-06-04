@@ -25,7 +25,7 @@ public class AppConfig {
         dataSource.setUrl("jdbc:postgresql://localhost:5432/test_geek_tilman");
         dataSource.setUsername("postgres");
         dataSource.setDriverClassName("org.postgresql.Driver");
-        dataSource.setPassword("123");
+        dataSource.setPassword("juDE1298");
         return dataSource;
     }
 
@@ -53,7 +53,8 @@ public class AppConfig {
         properties.put("hibernate.jdbc.batch_size", 10);
         // Включает логирование
         properties.put("hibernate.show_sql", true);
-        properties.put("hibernate.hbm2ddl.auto", "update");
+//        properties.put("hibernate.hbm2ddl.auto", "update");
+        properties.put("hibernate.hbm2ddl.auto", "create");
         factory.setJpaProperties(properties);
         return factory;
     }

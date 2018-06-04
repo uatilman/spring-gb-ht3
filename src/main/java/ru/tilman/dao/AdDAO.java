@@ -3,6 +3,7 @@ package ru.tilman.dao;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import ru.tilman.entity.AbstractEntity;
 import ru.tilman.entity.Ad;
 
 import java.util.List;
@@ -33,5 +34,12 @@ public class AdDAO extends AbstractDAO {
             if (ad == null) continue;
             em.persist(ad);
         }
+    }
+
+    // TODO: 03.06.2018 НЕПРОВЕРЕННО
+    public void removeById(String id) {
+        if (id == null || id.isEmpty()) return;
+        Ad element = em.find(Ad.class, id);
+        em.remove(element);
     }
 }

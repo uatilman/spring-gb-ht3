@@ -50,8 +50,14 @@ public class App {
         System.out.println(companyDAO.getCompanyList());
         System.out.println(adDAO.getAdList());
 
+        for (Ad ad:adList) {
+            adDAO.removeById(ad.getId());
+        }
+
         // TODO: 03.06.2018 remove, merge create, test all
         // TODO: тесты аналогично javaee book with script
+
+        System.out.println(adDAO.getAdList());
 
     }
 
