@@ -1,5 +1,6 @@
-package ru.tilman.dao;
+package ru.tilman.repository;
 
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
@@ -8,7 +9,7 @@ import ru.tilman.entity.Company;
 import java.util.List;
 
 
-@Service
+@Repository // TODO: 06.06.2018 other repository and renames classes names 
 @Transactional
 public class CompanyDAO extends AbstractDAO {
 

@@ -1,4 +1,4 @@
-package ru.tilman.dao;
+package ru.tilman.repository;
 
 import org.springframework.transaction.annotation.Transactional;
 
