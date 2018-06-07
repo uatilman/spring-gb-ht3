@@ -10,7 +10,8 @@ import java.util.Objects;
 @Entity
 public class Category extends AbstractEntity {
 
-    @NotNull private String name;
+    @NotNull
+    private String name;
 
     public Category() {
     }

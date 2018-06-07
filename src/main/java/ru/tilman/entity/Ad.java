@@ -3,7 +3,6 @@ package ru.tilman.entity;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.util.Objects;
@@ -15,17 +14,21 @@ import java.util.Objects;
 @Entity
 public class Ad extends AbstractEntity {
 
-    @NotNull private String name;
+    @NotNull
+    private String name;
 
-    @NotNull private String content;
-
-    @ManyToOne
-    @JoinColumn (name = "category_id")
-    @NotNull private Category category;
+    @NotNull
+    private String content;
 
     @ManyToOne
-    @JoinColumn (name = "company_id")
-    @NotNull private Company company;
+    @JoinColumn(name = "category_id")
+    @NotNull
+    private Category category;
+
+    @ManyToOne
+    @JoinColumn(name = "company_id")
+    @NotNull
+    private Company company;
 
     @Pattern(regexp = "^((8|\\+7)[\\- ]?)?(\\(?\\d{3}\\)?[\\- ]?)?[\\d\\- ]{7,10}$")
     private String phoneNumber;

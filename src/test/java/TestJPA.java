@@ -6,12 +6,12 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 import ru.tilman.AppConfig;
-import ru.tilman.repository.AdDAO;
-import ru.tilman.repository.CategoryDAO;
-import ru.tilman.repository.CompanyDAO;
 import ru.tilman.entity.Ad;
 import ru.tilman.entity.Category;
 import ru.tilman.entity.Company;
+import ru.tilman.dao.AdDAO;
+import ru.tilman.dao.CategoryDAO;
+import ru.tilman.dao.CompanyDAO;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -4,18 +4,17 @@ import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
-/**
- * Для компании: идентификатор, название компании, описание, адрес компании;
- */
-
 @Entity
 public class Company extends AbstractEntity {
 
-    @NotNull private String name;
+    @NotNull
+    private String name;
 
-    @NotNull private String description;
+    @NotNull
+    private String description;
 
-    @NotNull private String address;
+    @NotNull
+    private String address;
 
 /*    @OneToMany(mappedBy = "company", fetch = EAGER)
     private List<Ad> adList;*/

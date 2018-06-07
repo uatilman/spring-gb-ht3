@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -16,10 +17,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.sql.DataSource;
 import java.util.Properties;
 
-
 @Configuration
 @EnableTransactionManagement
-@ComponentScan({"ru.tilman.repository"})
+@EnableJpaRepositories("ru.tilman.repository")
+@ComponentScan({"ru.tilman.dao", "ru.tilman.service", "ru.tilman.repository"})
 @PropertySource("classpath:database-postgresql-configuration.properties")
 public class AppConfig {
 
@@ -41,13 +42,13 @@ public class AppConfig {
     @Bean(name = "entityManagerFactory")
     public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean(
             @Qualifier("dataSource") DataSource dataSource,
+
             @Value("${org.hibernate.dialect.PostgreSQL95Dialect}") String dialect,
             @Value("${hibernate.max_fetch_depth}") int maxFetchDepth,
             @Value("${hibernate.jdbc.fetch_size}") int fetchSize,
             @Value("${hibernate.jdbc.batch_size}") int batchSize,
             @Value("${hibernate.show_sql}") boolean showSql,
             @Value("${hibernate.hbm2ddl.auto}") String tableStrategy
-
 
     ) {
 

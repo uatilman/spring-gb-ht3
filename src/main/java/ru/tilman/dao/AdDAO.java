@@ -1,14 +1,13 @@
-package ru.tilman.repository;
+package ru.tilman.dao;
 
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.stereotype.Service;
-
 import ru.tilman.entity.Ad;
 
 import java.util.List;
 
 
-@Service
+@Repository
 @Transactional
 public class AdDAO extends AbstractDAO {
 

@@ -1,12 +1,10 @@
-package ru.tilman.repository;
+package ru.tilman.dao;
 
 import org.springframework.transaction.annotation.Transactional;
-
 import ru.tilman.entity.AbstractEntity;
 
-import javax.persistence.PersistenceContext;
 import javax.persistence.EntityManager;
-
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Transactional
