@@ -43,7 +43,7 @@ public class AppConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean(
             @Qualifier("dataSource") DataSource dataSource,
 
-            @Value("${org.hibernate.dialect.PostgreSQL95Dialect}") String dialect,
+            @Value("${hibernate.dialect}") String dialect,
             @Value("${hibernate.max_fetch_depth}") int maxFetchDepth,
             @Value("${hibernate.jdbc.fetch_size}") int fetchSize,
             @Value("${hibernate.jdbc.batch_size}") int batchSize,
