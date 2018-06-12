@@ -9,30 +9,38 @@
 </head>
 <body>
 
-<h3>Add company</h3>
-<form:form modelAttribute="company" method="post">
+<div class="container">
+    <div class="padding-site">
+        <div class="product-table">
 
-    <table border="1">
-        <tr>
-            <td><form:label path="name">Company name</form:label></td>
-            <td><form:input path="name"/></td>
-        </tr>
 
-        <tr>
-            <td><form:label path="description">Description</form:label></td>
-            <td><form:input path="description"/></td>
-        </tr>
+            <h3>Add company</h3>
+            <form:form modelAttribute="company" method="post">
 
-        <tr>
-            <td><form:label path="address">Company address</form:label></td>
-            <td><form:input path="address"/></td>
-        </tr>
-    </table>
+                <table border="1">
+                    <tr>
+                        <td><form:label path="name">Company name</form:label></td>
+                        <td><form:input path="name"/></td>
+                    </tr>
 
-    <br/>
-    <button class="order-button" type="submit">Save</button>
+                    <tr>
+                        <td><form:label path="description">Description</form:label></td>
+                        <td><form:input path="description"/></td>
+                    </tr>
 
-</form:form>
+                    <tr>
+                        <td><form:label path="address">Company address</form:label></td>
+                        <td><form:input path="address"/></td>
+                    </tr>
+                </table>
+
+                <br/>
+                <button class="order-button" type="submit">Save</button>
+
+            </form:form>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
