@@ -1,4 +1,3 @@
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.testng.Assert;
@@ -7,12 +6,12 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import ru.tilman.config.AppConfig;
-import ru.tilman.entity.Ad;
-import ru.tilman.entity.Category;
-import ru.tilman.entity.Company;
 import ru.tilman.dao.AdDAO;
 import ru.tilman.dao.CategoryDAO;
 import ru.tilman.dao.CompanyDAO;
+import ru.tilman.entity.Ad;
+import ru.tilman.entity.Category;
+import ru.tilman.entity.Company;
 
 import java.util.ArrayList;
 import java.util.Arrays;

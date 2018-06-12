@@ -21,7 +21,7 @@ public class CreateCompanyController {
     }
 
     // ВОПРОС !!!!!!!!!!!!!!!!!!!
-    // В методичке в @RequestMapping есть параметр для params="form".
+    // В методичке стр.14 в @RequestMapping есть параметр для params="form".
     // Что это? С ним ничего неработает.
 
     @RequestMapping(method = RequestMethod.GET)
