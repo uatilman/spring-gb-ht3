@@ -16,9 +16,6 @@ public class Company extends AbstractEntity {
     @NotNull
     private String address;
 
-/*    @OneToMany(mappedBy = "company", fetch = EAGER)
-    private List<Ad> adList;*/
-
     public Company() {
     }
 

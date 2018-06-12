@@ -3,6 +3,7 @@ package ru.tilman;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import ru.tilman.config.AppConfig;
 import ru.tilman.service.ApplicationService;
 
 public class Application {

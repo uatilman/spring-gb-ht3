@@ -4,8 +4,9 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
-import ru.tilman.AppConfig;
+import ru.tilman.config.AppConfig;
 import ru.tilman.entity.Ad;
 import ru.tilman.entity.Category;
 import ru.tilman.entity.Company;
@@ -36,6 +37,7 @@ public class TestJPA {
     }
 
     @Test(priority = 10)
+    @Ignore
     public void isDBTablesEmpty() {
         Assert.assertEquals(companyDAO.getCompanyList().size(), 0);
         Assert.assertEquals(categoryDAO.getCategoryList().size(), 0);
@@ -72,6 +74,7 @@ public class TestJPA {
     }
 
     @Test(priority = 30)
+    @Ignore
     public void findDataById() {
         Assert.assertEquals(companyList.get(0), companyDAO.getCompanyById(companyList.get(0).getId()));
         Assert.assertEquals(categoryList.get(0), categoryDAO.getCategoryById(categoryList.get(0).getId()));
@@ -79,6 +82,7 @@ public class TestJPA {
     }
 
     @Test(priority = 40)
+    @Ignore
     public void mergeData() {
 
         Company company = companyList.get(0);
@@ -99,6 +103,7 @@ public class TestJPA {
     }
 
     @Test(priority = 50)
+    @Ignore
     public void removeData() {
 
         for (Ad el : adList) {
@@ -120,6 +125,7 @@ public class TestJPA {
     }
 
     @AfterSuite
+    @Ignore
     public void addDataToNextTest() {
         persistData();
     }
