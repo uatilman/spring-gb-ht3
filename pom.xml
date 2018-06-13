@@ -5,22 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ru.gb.tilman</groupId>
-    <artifactId>spring-ht3</artifactId>
+    <artifactId>spring-cci</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>spring-ht3</name>
+    <name>spring-cci</name>
 
     <developers>
-        <developer>
-            <name>Denis Volnenko</name>
-            <roles>
-                <role>teacher</role>
-                <role>class AppConfig</role>
-                <role>application-context.xml</role>
-            </roles>
-        </developer>
-
         <developer>
             <name>Yuriy Tilman</name>
             <email>uatilman@gmail.com</email>
@@ -38,7 +29,7 @@
     </properties>
 
     <build>
-        <finalName>spring-ht3</finalName>
+        <finalName>spring-cci</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -140,14 +131,6 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.11</version>
-        </dependency>
-
-
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>6.14.3</version>
-            <scope>test</scope>
         </dependency>
 
         <dependency>

@@ -1,8 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ page session="false" pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" errorPage="chambers.jsp"   %>
 <html>
 <head>
-    <title>Companies</title>
+    <title>Список палат</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
 </head>
 <body>
@@ -15,25 +15,23 @@
 
             <c:choose>
 
-                <c:when test="${not empty companies}">
+                <c:when test="${not empty chambers}">
                     <table border="1">
-                        <c:forEach items="${companies}" var="company">
+                        <c:forEach items="${chambers}" var="chamber">
                             <tr>
-                                <td class="name-column">${company.name}</td>
-                                <td class="description-column">${company.description}</td>
-                                <td class="description-column">${company.address}</td>
+                                <td class="name-column">${chamber.id}</td>
+                                <td class="description-column">${chamber.name}</td>
                             </tr>
                         </c:forEach>
                     </table>
                 </c:when>
 
-                <c:when test="${empty companies}">
-                    <p style="color: red">Information not found</p>
+                <c:when test="${empty chambers}">
+                    <p style="color: red">Информация не найдена</p>
                 </c:when>
 
             </c:choose>
             <br>
-            <a href="${pageContext.request.contextPath}/add" class="order-button">Add company</a>
 
         </div>
     </div>

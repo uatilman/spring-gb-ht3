@@ -34,6 +34,7 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
 
         //создание фильтра кодировки, который позволит работать с русскими символами
         CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
+
         characterEncodingFilter.setEncoding("UTF-8");
         characterEncodingFilter.setForceEncoding(true);
 
