@@ -21,7 +21,7 @@ import java.util.Properties;
 @EnableTransactionManagement
 @EnableJpaRepositories("ru.tilman.repository")
 @ComponentScan({"ru.tilman.dao", "ru.tilman.service", "ru.tilman.repository"})
-@PropertySource("classpath:database-postgresql-configuration.properties")
+@PropertySource("classpath:database-configuration.properties")
 public class AppConfig {
 
     @Bean(name = "dataSource")
