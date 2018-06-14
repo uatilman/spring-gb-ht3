@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,20 +45,13 @@ public class ChambersController {
 
         uiModel.addAttribute(MESSAGE_ATTRIBUTE, ("Информация о палате " + id));
         uiModel.addAttribute(CHAMBER_ATTRIBUTE, chamberRepository.findById(id));
-//        logger.info(name);
+        logger.info(id.toString());
         return "chambers";
     }
 
     /**
      * http://localhost:8080/chambers/articles_ajax?pageCounter=0&number=1&order=DESC&orderBy=name&number=1
      * Метод обрабатывающий асинхронный запрос
-     */
-    @RequestMapping(
-            value = "/articles_ajax",
-            method = RequestMethod.GET,
-            produces = "application/json")
-    @ResponseBody
-    /**
      * @param pageCounter-текущая страница(блок из number статей)
      * @param number - количество статей в одном блоке
      * @param order - порядок сортировки(ASC-прямая, DESC-обратная)
@@ -67,12 +59,17 @@ public class ChambersController {
      * @return объект класса ChamberAjax, который содержит список статей,
      * данный объект преобразовывается в JSON-формат
      */
+
+    @ResponseBody
+    @RequestMapping(
+            value = "/articles_ajax",
+            method = RequestMethod.GET,
+            produces = "application/json")
     public ChamberAjax listAjax(
             @RequestParam("pageCounter") Integer pageCounter,
             @RequestParam("number") Integer number,
             @RequestParam("order") String order,
             @RequestParam("orderBy") String orderBy) {
-
         //объект, который будет содержать информацию о сортировке
         Sort sort = null;
 
@@ -90,6 +87,7 @@ public class ChambersController {
         Page<Chamber> chamberPage = chamberRepository.findAll(pageable);
 
         ChamberAjax responsive = new ChamberAjax();
+
         //из объекта Page возвращаем итератор и с помощью библиотеки google guava создаем списочный массив
         responsive.setChambers(Lists.newArrayList(chamberPage.iterator()));
 

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-// TODO: 12.06.2018 В работе. при 400, 404, 500 выводить error.jsp
+// TODO: 12.06.2018 В работе. при 400, 404, 406, 500 выводить error.jsp
 @ControllerAdvice
 public class MissingServletRequestParameterExceptionHandler {
     @ExceptionHandler(MissingServletRequestParameterException.class)

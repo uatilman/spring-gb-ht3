@@ -19,6 +19,7 @@
 </script>
 <script src="${pageContext.request.contextPath}/resources/assets/getData.js"></script>
 
+
 <div class="container">
     <div class="padding-site">
         <div class="product-table">
@@ -28,7 +29,7 @@
             <c:choose>
 
                 <c:when test="${not empty chambers}">
-                    <table border="1">
+               <%--     <table border="1">
                         <c:forEach items="${chambers}" var="chamber">
                             <tr>
                                 <td class="name-column">${chamber.id}</td>
@@ -37,7 +38,7 @@
                                 <td class="description-column">${chamber.regions.districs.name}</td>
                             </tr>
                         </c:forEach>
-                    </table>
+                    </table>--%>
                 </c:when>
 
                 <c:when test="${empty chambers}">
