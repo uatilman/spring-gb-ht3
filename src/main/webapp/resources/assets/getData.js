@@ -1,43 +1,31 @@
 //Шаблон для размещения описания статьи в списке
-var articleBody =
-    "<div class='chamber'>"
-    + " Id: "
-    + "<span class='chamber_id'></span>"
-    + " Палата: "
-    + "<span class='chamber_name'></span>"
-    + "</div>";
-
-//данные, которые передаются на сервер
-//количество страниц
-var number = 4;
-//порядок сортировки
-var order = "DESC";
-//поле для сортировки
+var chamberBody =
+    "                    <tr>" +
+    "                        <td class='id-column'></td>" +
+    "                        <td class='name-column'></td>" +
+    "                        <td class='region-name-column'></td>" +
+    "                        <td class='district-name-column'></td>" +
+    "                    </tr>";
+var number = 20;
+var order = "ASC";
 var orderBy = "name";
-//счетчик страниц(блоков)
 var pageCounter = 0;
 
-//функция для размещения полученных данных на странице
-function renderingArticles(chambers) {
+function renderingChambers(chambers) {
     var count = 1;
     chambers.forEach(function (chamber) {
-        var chName = chamber["id"];
-
-        var test = $(articleBody)
-            .find(".chamber_id").html(chamber["id"])
-            .end()
-            .find(".chamber_name").html(chamber["name"])
-            .end()
-            .appendTo("#templatemo_content");
+        var test = $(chamberBody)
+            .find(".id-column").html(chamber["id"]).end()
+            .find(".name-column").html(chamber["name"]).end()
+            .find(".region-name-column").html(chamber["region"]["name"]).end()
+            .find(".district-name-column").html(chamber["region"]["district"]["name"]).end()
+            .appendTo("#chamber-table");
         count++;
 
     });
 }
 
-//функция для осуществления асинхронного GET запроса
-function loadArticles() {
-
-    //формирование строки с данными, которые необходимо передать на сервер в метод listAjax
+function loadChambers() {
     var data = "pageCounter=" + pageCounter + "&" + "order=" + order + "&" + "orderBy=" + orderBy + "&" + "number=" + number;
 
     $.ajax({
@@ -45,12 +33,9 @@ function loadArticles() {
         type: 'GET',
         data: data,
         cache: false,
-        success: function (articlesResponsive) {
-
-            if (articlesResponsive !== 0) {
-                //если ответ содержит данные, то они размещаются на странице
-                //а счетчик страниц(блоков) увеличивается на единицу
-                renderingArticles(articlesResponsive["chambers"]);
+        success: function (chambersResponsive) {
+            if (chambersResponsive !== 0) {
+                renderingChambers(chambersResponsive["chambers"]);
                 pageCounter++;
             }
         }
@@ -58,13 +43,10 @@ function loadArticles() {
 }
 
 $(document).ready(function () {
-    //первая страница(блок) статей подгружается при загрузке страницы
-    loadArticles();
-
-    $(".btn_load").click(function () {
-
-        //остальные страницы подгружаются при нажатии на кнопку "Загрузить еще"
-        loadArticles();
-
-    })
+    loadChambers();
+    $(window).scroll(function () {
+        if ($(window).scrollTop() === $(document).height() - $(window).height()) {
+            loadChambers();
+        }
+    });
 });

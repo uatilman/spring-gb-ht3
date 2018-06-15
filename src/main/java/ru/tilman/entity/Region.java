@@ -2,22 +2,20 @@ package ru.tilman.entity;
 
 import javax.persistence.*;
 
-import static javax.persistence.GenerationType.AUTO;
-
 @Entity
 @Table(name = "regions")
-public class Regions {
+public class Region {
 
     @Id
-    @Column (name = "id")
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "name")
     private String name;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "district_id")
-    private Districs districs;
+    private District district;
 
     public Long getId() {
         return id;
@@ -35,11 +33,11 @@ public class Regions {
         this.name = name;
     }
 
-    public Districs getDistrics() {
-        return districs;
+    public District getDistrict() {
+        return district;
     }
 
-    public void setDistrics(Districs districs) {
-        this.districs = districs;
+    public void setDistrict(District district) {
+        this.district = district;
     }
 }

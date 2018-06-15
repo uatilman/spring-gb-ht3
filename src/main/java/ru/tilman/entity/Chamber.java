@@ -1,7 +1,5 @@
 package ru.tilman.entity;
 
-import org.springframework.stereotype.Component;
-
 import javax.persistence.*;
 
 import static javax.persistence.GenerationType.AUTO;
@@ -12,15 +10,18 @@ public class Chamber {
 
     @Id
     @GeneratedValue(strategy = AUTO)
-    @Column (name = "id")
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "name")
     private String name;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "region_id")
-    private Regions regions;
+    private Region region;
+
+    @Column(name = "address")
+    private String address;
 
     public Long getId() {
         return id;
@@ -38,11 +39,19 @@ public class Chamber {
         this.name = name;
     }
 
-    public Regions getRegions() {
-        return regions;
+    public Region getRegion() {
+        return region;
     }
 
-    public void setRegions(Regions regions) {
-        this.regions = regions;
+    public void setRegion(Region region) {
+        this.region = region;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

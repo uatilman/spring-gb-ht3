@@ -7,10 +7,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "districts")
-public class Districs {
+public class District {
 
     @Id
-    @Column (name = "id")
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "name")
