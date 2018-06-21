@@ -1,0 +1,10 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+    <definition extends="default" name="chambers">
+        <put-attribute name="scripParameters" value="/WEB-INF/views/chamber/chamber-body-template.jsp" />
+        <put-attribute name="content" value="/WEB-INF/views/chamber/chambers.jsp" />
+    </definition>
+</tiles-definitions>

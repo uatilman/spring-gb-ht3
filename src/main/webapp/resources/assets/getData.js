@@ -1,15 +1,4 @@
-//Шаблон для размещения описания статьи в списке
-var chamberBody =
-    "                    <tr>" +
-    "                        <td class='id-column'></td>" +
-    "                        <td class='name-column'></td>" +
-    "                        <td class='region-name-column'></td>" +
-    "                        <td class='district-name-column'></td>" +
-    "                    </tr>";
-var number = 20;
-var order = "ASC";
-var orderBy = "name";
-var pageCounter = 0;
+
 
 function renderingChambers(chambers) {
     var count = 1;
@@ -19,7 +8,10 @@ function renderingChambers(chambers) {
             .find(".name-column").html(chamber["name"]).end()
             .find(".region-name-column").html(chamber["region"]["name"]).end()
             .find(".district-name-column").html(chamber["region"]["district"]["name"]).end()
-            .appendTo("#chamber-table");
+            .find(".edit-chamber-href").attr("href", contextPath + "/chambers/add/" + chamber["id"]).end()
+            .find(".show-chamber-href").attr("href", contextPath + "/chambers/" + chamber["id"]).end()
+            .find(".remove-chamber-href").attr("href", contextPath + "/chambers/remove/" + chamber["id"]).end()
+            .appendTo(".chamber-table");
         count++;
 
     });

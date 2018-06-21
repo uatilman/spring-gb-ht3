@@ -1,27 +1,36 @@
 package ru.tilman.entity;
 
 import javax.persistence.*;
-
-import static javax.persistence.GenerationType.AUTO;
+import javax.validation.Valid;
+import javax.validation.constraints.Size;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "chambers")
-public class Chamber {
+public class Chamber implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = AUTO)
     @Column(name = "id")
+    @GeneratedValue(generator = "chamber_id_generator")
+    @SequenceGenerator(name = "chamber_id_generator", initialValue = 204)
     private Long id;
 
+
+    @Size(min = 4, max = 255, message = "{validation.name.size}")
     @Column(name = "name")
     private String name;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+
+    @ManyToOne
     @JoinColumn(name = "region_id")
+    @Valid
     private Region region;
 
     @Column(name = "address")
     private String address;
+
+    @Column(name = "urlPortal")
+    private String urlPortal;
 
     public Long getId() {
         return id;
@@ -53,5 +62,29 @@ public class Chamber {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Chamber chamber = (Chamber) o;
+
+        if (!id.equals(chamber.id)) return false;
+        if (!name.equals(chamber.name)) return false;
+        if (!region.equals(chamber.region)) return false;
+        if (!address.equals(chamber.address)) return false;
+        return urlPortal != null ? urlPortal.equals(chamber.urlPortal) : chamber.urlPortal == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id.hashCode();
+        result = 31 * result + name.hashCode();
+        result = 31 * result + region.hashCode();
+        result = 31 * result + address.hashCode();
+        result = 31 * result + (urlPortal != null ? urlPortal.hashCode() : 0);
+        return result;
     }
 }

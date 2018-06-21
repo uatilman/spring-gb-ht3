@@ -44,9 +44,10 @@ body {
 
 .header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     position: relative;
     margin-bottom: 50px;
+    background-color: #f9f9f9;
 }
 
 .header-contacts h2 {
@@ -708,8 +709,12 @@ nav {
 }
 
 .footer {
-    height: 384px;
-    background-color: #f7f7f7;
+    /*height: 384px;*/
+    background-color: #f9f9f9;
+}
+
+footer {
+    margin: 20px 98px 0 98px;
 }
 
 .footer-top {
@@ -983,39 +988,45 @@ button .svg-inline--fa.fa-w-14:hover {
 }
 
 .error {
-    display: flex;
-    justify-content: center;
-    margin-top: 100px;
-    margin-bottom: 100px;
+    color: red;
 }
 
-.product-table {
+.chamber-table {
     width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 50px 185px;
+    border-width: 1px;
 }
 
-.product-table .category-column {
-    width: 70px;
+.chamber-table tbody tr:nth-last-of-type(2n) {
+    color: red;
+    /*color: #f9f9f9 ;*/
 }
 
-.product-table .name-column {
+.chamber-table tbody tr:hover {
+    /*color: #cccccc;*/
+    color: black;
+}
+
+.chamber-table .id-column {
+    width: 50px;
+}
+
+.chamber-table .name-column {
+    width: 300px;
+}
+
+.chamber-table .region-name-column {
+    width: 200px;
+}
+
+.chamber-table .district-name-column {
     width: 100px;
 }
 
-.product-table .description-column {
-    width: 306px;
+.chamber-table .edit-column {
+    width: 150px;
 }
 
-.product-table .image-column {
-    width: 100px;
-}
-
-.product-table .image-column img {
-    width: 98px;
-}
-
-.product-table .remove-column {
-    width: 100px;
-    text-align: center;
+.table-head {
+    margin: 50px 185px;
 }

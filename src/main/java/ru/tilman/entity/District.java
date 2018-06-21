@@ -1,16 +1,18 @@
 package ru.tilman.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+
+import java.io.Serializable;
+
+import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
 @Table(name = "districts")
-public class District {
+public class District implements Serializable {
 
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = SEQUENCE)
     private Long id;
 
     @Column(name = "name")
@@ -30,5 +32,23 @@ public class District {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        District district = (District) o;
+
+        if (!id.equals(district.id)) return false;
+        return name.equals(district.name);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id.hashCode();
+        result = 31 * result + name.hashCode();
+        return result;
     }
 }
