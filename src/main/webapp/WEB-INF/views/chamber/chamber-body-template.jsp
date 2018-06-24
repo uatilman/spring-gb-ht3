@@ -10,10 +10,6 @@
         "                        <td class='name-column'></td>" +
         "                        <td class='region-name-column'></td>" +
         "                        <td class='district-name-column'></td>" +
-        "                        <td class='edit-column'>" +
-        "<a class='edit-chamber-href' href=''>Edit>></a><br>" +
-        "<a class='show-chamber-href' href=''>Show>></a><br>" +
-        "<a class='remove-chamber-href' href=''>Remove>></a></td>" +
         "                    </tr>";
     var number = 20;
     var order = "ASC";

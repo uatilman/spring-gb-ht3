@@ -998,13 +998,13 @@ button .svg-inline--fa.fa-w-14:hover {
 }
 
 .chamber-table tbody tr:nth-last-of-type(2n) {
-    color: red;
+    background-color: #2b91af;
     /*color: #f9f9f9 ;*/
 }
 
 .chamber-table tbody tr:hover {
-    /*color: #cccccc;*/
-    color: black;
+    background-color: #0000cc;
+    cursor: pointer;
 }
 
 .chamber-table .id-column {
@@ -1031,6 +1031,7 @@ button .svg-inline--fa.fa-w-14:hover {
     margin: 50px 185px;
 }
 
+/*
 .click-row:hover {
     background-color: #00FFFF;
-}
+}*/

@@ -31,9 +31,9 @@
             <th>${labelName}</th>
             <th>Region</th>
             <th>District</th>
-            <th>Action</th>
         </tr>
         </thead>
+        <tbody></tbody>
     </table>
 
 </div>

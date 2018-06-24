@@ -7,10 +7,7 @@ function renderingChambers(chambers) {
             .find(".id-column").html(chamber["id"]).end()
             .find(".name-column").html(chamber["name"]).end()
             .find(".region-name-column").html(chamber["region"]["name"]).end()
-            .find(".district-name-column").html(chamber["region"]["district"]["name"]).end()
-            .find(".edit-chamber-href").attr("href", chamberHref + "/?form").end()
-            .find(".show-chamber-href").attr("href", chamberHref).end()
-            .find(".remove-chamber-href").attr("href", contextPath + "/chambers/remove/" + chamber["id"]).end();
+            .find(".district-name-column").html(chamber["region"]["district"]["name"]).end();
 
         $(test).attr("data-href", chamberHref);
         $(test).appendTo(".chamber-table");

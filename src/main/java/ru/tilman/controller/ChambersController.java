@@ -97,7 +97,11 @@ public class ChambersController {
             return "chambers/add";
         }
 
+    /*    Region region = regionRepository.findById(chamber.getRegion().getId()).get();
+        region.setDistrict(districtRepository.findById(region.getDistrict().getId()).get());
+        chamber.setRegion(region);*/
         chamberRepository.save(chamber);
+
         return "redirect:/chambers";
     }
 
