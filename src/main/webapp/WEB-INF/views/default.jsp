@@ -10,8 +10,15 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>DEFAULT</title>
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <title>
+        <c:choose>
+            <c:when test="${not empty title}">${title}</c:when>
+            <c:otherwise><tiles:insertAttribute name="title" ignore="true"/></c:otherwise>
+        </c:choose>
+    </title>
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/assets/ckeditor/ckeditor.js"></script>
+
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
 </head>
 

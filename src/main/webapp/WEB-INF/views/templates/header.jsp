@@ -8,8 +8,8 @@
     <div class="header">
         <nav>
             <ul class="menu">
-                <%--<li><a href="${pageContext.request.contextPath}/chambers">Chambers list</a></li>
-                <li><a href="${pageContext.request.contextPath}/chambers/add">Add chamber</a></li>--%>
+                <li><a href="${pageContext.request.contextPath}/chambers">Chambers list</a></li>
+                <li><a href="${pageContext.request.contextPath}/chambers?form">Add chamber</a></li>
                 <li><a href="#">Page 3</a></li>
                 <li><a href="#">Page 4</a></li>
                 </li>

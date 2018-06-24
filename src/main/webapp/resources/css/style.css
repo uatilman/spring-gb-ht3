@@ -1030,3 +1030,7 @@ button .svg-inline--fa.fa-w-14:hover {
 .table-head {
     margin: 50px 185px;
 }
+
+.click-row:hover {
+    background-color: #00FFFF;
+}

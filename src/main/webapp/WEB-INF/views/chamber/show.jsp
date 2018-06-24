@@ -11,34 +11,7 @@
 <spring:message code="table_chamber_address" var="labelAddress"/>
 <spring:message code="table_chamber_action" var="labelAction"/>
 
-<html>
 
-<jsp:include page="../fragments/head.jsp">
-    <jsp:param name="title" value="Chambers"/>
-</jsp:include>
-
-
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Список палат</title>
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script language="JavaScript" type="text/javascript">
-        var url = "chambers/articles_ajax";
-        var contextPath = "${pageContext.request.contextPath}";
-    </script>
-    <script language="JavaScript" type="text/javascript"
-            src="${pageContext.request.contextPath}/resources/assets/getData.js"></script>
-
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
-</head>
-
-<body>
-
-<div class="container">
-
-    <jsp:include page="../fragments/header.jsp"/>
-
-    <main class="content">
         <div class="padding-site">
             <h2>${chamber.name}</h2>
             <br>
@@ -48,9 +21,3 @@
             <p><strong>${labelDistrict}:</strong> ${chamber.region.district.name}</p>
             <p><strong>${labelAddress}:</strong> ${chamber.address}</p>
         </div>
-    </main>
-
-    <jsp:include page="../fragments/footer.jsp"/>
-
-</body>
-</html>

@@ -5,7 +5,7 @@
 
 <script>
     var chamberBody =
-        "                    <tr>" +
+        "                    <tr class='click-row' data-href=''>" +
         "                        <td class='id-column'></td>" +
         "                        <td class='name-column'></td>" +
         "                        <td class='region-name-column'></td>" +

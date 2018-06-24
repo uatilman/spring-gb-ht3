@@ -16,7 +16,6 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 import ru.tilman.entity.Chamber;
-import ru.tilman.entity.District;
 import ru.tilman.entity.Region;
 import ru.tilman.repository.ChamberRepository;
 import ru.tilman.repository.DistrictRepository;
@@ -30,10 +29,11 @@ import java.util.List;
 @Controller
 @RequestMapping("/chambers")
 public class ChambersController {
-    public final static String MESSAGE_ATTRIBUTE = "message";
+    public final static String CHAMBERS_COUNT_ATTRIBUTE = "chambersCount";
     public final static String CHAMBERS_ATTRIBUTE = "chambers";
     public final static String CHAMBER_ATTRIBUTE = "chamber";
     public final static String REGIONS_ATTRIBUTE = "regions";
+    public final static String TITLE = "title";
     private final Logger logger = LoggerFactory.getLogger(ChambersController.class);
 
     private final ChamberRepository chamberRepository;
@@ -53,76 +53,64 @@ public class ChambersController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String showChambersList(Model uiModel) {
-        setModelChambersListAttributes(uiModel);
+        List<Chamber> chamberList = chamberRepository.findAllByOrderByIdAsc();
+        uiModel.asMap().clear();
+        uiModel.addAttribute(CHAMBERS_COUNT_ATTRIBUTE, String.format("Список палат (%s)", chamberList.size()))
+                .addAttribute(CHAMBERS_ATTRIBUTE, chamberList);
         return "chambers";
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
     public String showChamber(Model uiModel, @PathVariable("id") Long id) {
         Chamber chamber = chamberRepository.findById(id).get();
-        uiModel.addAttribute(CHAMBER_ATTRIBUTE, chamber);
-        return "/show";
+        uiModel.addAttribute(CHAMBER_ATTRIBUTE, chamber)
+                .addAttribute(TITLE, chamber.getName());
+        return "chambers/show";
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    @RequestMapping(params = "form", method = RequestMethod.GET)
     public String getForm(Model uiModel) {
         uiModel.addAttribute(CHAMBER_ATTRIBUTE, new Chamber())
                 .addAttribute(REGIONS_ATTRIBUTE, regionRepository.findAll());
-        return "/add";
+        return "chambers/add";
     }
 
-    @RequestMapping(value = "/add/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
     public String getForm(Model uiModel, @PathVariable("id") Long id) {
         uiModel.addAttribute(CHAMBER_ATTRIBUTE, chamberRepository.findById(id).get())
                 .addAttribute(REGIONS_ATTRIBUTE, regionRepository.findAll());
-        return "/add";
+        return "chambers/add";
     }
 
-    @RequestMapping(value = "/remove/{id}", method = RequestMethod.GET)
-    public String remove(Model uiModel, @PathVariable("id") Long id) {
-        setModelChambersListAttributes(uiModel);
+    @RequestMapping(value = "remove/{id}", method = RequestMethod.GET)
+    public String remove(@PathVariable("id") Long id) {
         chamberRepository.deleteById(id);
         return "redirect:/chambers";
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String save(Model uiModel,
-                       @Valid @ModelAttribute(CHAMBER_ATTRIBUTE) Chamber chamber,
-                       @RequestParam("regionId") Long regionId,
-                       BindingResult bindingResult
-    ) {
+    @RequestMapping(params = "form", method = RequestMethod.POST)
+    public String save(@Valid Chamber chamber, BindingResult bindingResult, Model uiModel) {
+
         if (bindingResult.hasErrors()) {
             uiModel.addAttribute(CHAMBER_ATTRIBUTE, chamber)
                     .addAttribute(REGIONS_ATTRIBUTE, regionRepository.findAll());
-            return "/add";
+            return "chambers/add";
         }
 
-        Region region = regionRepository.findById(regionId).get();
-        District district = districtRepository.findById(region.getDistrict().getId()).get();
-        region.setDistrict(district);
-        chamber.setRegion(region);
         chamberRepository.save(chamber);
-
-        setModelChambersListAttributes(uiModel);
-
         return "redirect:/chambers";
     }
 
-    @RequestMapping(value = "/add/{id}", method = RequestMethod.POST)
-    public String save(@Valid Chamber chamber,
-                       BindingResult bindingResult,
-                       Model uiModel,
-                       @PathVariable("id") Long id) {
+    @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.POST)
+    public String update(@Valid Chamber chamber, BindingResult bindingResult, Model uiModel) {
 
         if (bindingResult.hasErrors()) {
             uiModel.addAttribute(CHAMBER_ATTRIBUTE, chamber)
                     .addAttribute(REGIONS_ATTRIBUTE, regionRepository.findAll());
-            return "/add";
+            return "chambers/add";
         }
 
         chamberRepository.save(chamber);
-
-        setModelChambersListAttributes(uiModel);
 
         return "redirect:/chambers";
     }
@@ -146,18 +134,11 @@ public class ChambersController {
             sort = new Sort(Sort.Direction.ASC, orderBy);
         }
 
-        PageRequest pageable = new PageRequest(pageCounter, number, sort);
+        PageRequest pageable = PageRequest.of(pageCounter, number, sort);
         Page<Chamber> chamberPage = chamberRepository.findAll(pageable);
         ChamberAjax responsive = new ChamberAjax();
         responsive.setChambers(Lists.newArrayList(chamberPage.iterator()));
         return responsive;
-    }
-
-    private void setModelChambersListAttributes(Model uiModel) {
-        List<Chamber> chamberList = chamberRepository.findAllByOrderByIdAsc();
-        uiModel.asMap().clear();
-        uiModel.addAttribute(MESSAGE_ATTRIBUTE, String.format("Список палат (%s)", chamberList.size()));
-        uiModel.addAttribute(CHAMBERS_ATTRIBUTE, chamberList);
     }
 
     @InitBinder
