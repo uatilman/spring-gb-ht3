@@ -21,17 +21,9 @@
             <p><strong>${labelDistrict}:</strong> ${chamber.region.district.name}</p>
             <p><strong>${labelAddress}:</strong> ${chamber.address}</p>
 
-            <br>
-            <br>
-            <br>
-            <br>
-
-            <a href="${pageContext.request.contextPath}/chambers/remove/${chamber.id}" class="order-button">Remove</a>
-            <br>
-            <br>
-            <br>
-            <br>
-            <a href="${pageContext.request.contextPath}/chambers/${chamber.id}/?form" class="order-button">Edit</a><br>
-
+<div class="button-panel">
+    <a href="${pageContext.request.contextPath}/chambers/remove/${chamber.id}" class="order-button">Remove</a>
+    <a href="${pageContext.request.contextPath}/chambers/${chamber.id}/?form" class="order-button">Edit</a><br>
+</div>
 
         </div>

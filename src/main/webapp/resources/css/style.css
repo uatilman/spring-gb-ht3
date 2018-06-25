@@ -46,7 +46,7 @@ body {
     display: flex;
     justify-content: flex-end;
     position: relative;
-    margin-bottom: 50px;
+    margin-bottom: 25px;
     background-color: #f9f9f9;
 }
 
@@ -495,7 +495,8 @@ nav {
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 3.6px;
-    margin-bottom: 100px;
+    margin: 0 25px 0 0;
+    width: 120px;
 }
 
 .order-button:hover {
@@ -505,6 +506,12 @@ nav {
 .order-button:active {
     position: relative;
     top: 2px;
+}
+
+.button-panel {
+    display: flex;
+    justify-content: flex-start;
+    margin: 25px 0;
 }
 
 .hot-deal {
@@ -993,17 +1000,16 @@ button .svg-inline--fa.fa-w-14:hover {
 
 .chamber-table {
     width: 800px;
-    margin: 50px 185px;
+    margin: 10px 185px;
     border-width: 1px;
 }
 
 .chamber-table tbody tr:nth-last-of-type(2n) {
-    background-color: #2b91af;
-    /*color: #f9f9f9 ;*/
+    background-color: #c7c7c7;
 }
 
 .chamber-table tbody tr:hover {
-    background-color: #0000cc;
+    background-color: #adadad;
     cursor: pointer;
 }
 
@@ -1028,7 +1034,7 @@ button .svg-inline--fa.fa-w-14:hover {
 }
 
 .table-head {
-    margin: 50px 185px;
+    margin: 10px 185px;
 }
 
 /*
