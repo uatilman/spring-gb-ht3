@@ -8,21 +8,20 @@
         function () {
             var currentLang = "${pageContext.response.locale}";
             var data = (currentLang === "ru") ? "en" : "ru";
-            $(data).appendTo(".lang");
+            $(document).find(".lang").html(data);
 
             $(".lang").click(function () {
-                load("${pageContext.request.servletPath}?lang=" + data);
-
-                /*          $.ajax({
+                          $.ajax({
                               url: contextPath,
                               type: 'GET',
                               data: {
                                   lang: data
                               },
                               cache: false,
-                              success: location.reload()
-                          });*/
-
+                              success: function () {
+                                  location.reload();
+                              }
+                          });
             });
         }
     );
@@ -31,8 +30,8 @@
 <header class="padding-site">
     <%--<div class="lang"><a href="${pageContext.request.servletPath}?lang=ru"></a></div>--%>
     <div class="header">
-        <div class="lang">...</div>
         <nav>
+            <div class="lang"></div>
             <ul class="menu">
                 <li><a href="${pageContext.request.contextPath}/chambers">Chambers list</a></li>
                 <li><a href="${pageContext.request.contextPath}/chambers?form">Add chamber</a></li>
