@@ -17,7 +17,7 @@ function renderingChambers(chambers) {
     });
 }
 
-function setListener() {
+function setRowClickListener() {
     $(".click-row").click(function () {
         window.location = $(this).data("href");
         return false;
@@ -35,7 +35,7 @@ function loadChambers() {
         success: function (chambersResponsive) {
             if (chambersResponsive !== 0) {
                 renderingChambers(chambersResponsive["chambers"]);
-                setListener();
+                setRowClickListener();
                 pageCounter++;
             }
         }

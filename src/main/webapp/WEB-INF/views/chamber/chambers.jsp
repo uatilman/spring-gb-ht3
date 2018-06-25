@@ -27,10 +27,10 @@
     <table class="chamber-table">
         <thead>
         <tr>
-            <th>Id</th>
+            <th>${labelId}</th>
             <th>${labelName}</th>
-            <th>Region</th>
-            <th>District</th>
+            <th>${labelRegion}</th>
+            <th>${labelDistrict}</th>
         </tr>
         </thead>
         <tbody></tbody>
