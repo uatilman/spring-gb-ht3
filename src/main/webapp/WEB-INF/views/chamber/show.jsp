@@ -15,18 +15,20 @@
 <spring:message code="button_remove" var="labelButtonRemove"/>
 
 
-        <div class="padding-site">
-            <h2>${chamber.name}</h2>
-            <br>
-            <br>
-            <p><strong>${labelId}:</strong> ${chamber.id}</p>
-            <p><strong>${labelRegion}:</strong> ${chamber.region.name}</p>
-            <p><strong>${labelDistrict}:</strong> ${chamber.region.district.name}</p>
-            <p><strong>${labelAddress}:</strong> ${chamber.address}</p>
+<div class="padding-site">
+    <h2>${chamber.name}</h2>
+    <br>
+    <br>
+    <p><strong>${labelId}:</strong> ${chamber.id}</p>
+    <p><strong>${labelRegion}:</strong> ${chamber.region.name}</p>
+    <p><strong>${labelDistrict}:</strong> ${chamber.region.district.name}</p>
+    <p><strong>${labelAddress}:</strong> ${chamber.address}</p>
 
-<div class="button-panel">
-    <a href="${pageContext.request.contextPath}/chambers/remove/${chamber.id}" class="order-button">${labelButtonRemove}</a>
-    <a href="${pageContext.request.contextPath}/chambers/${chamber.id}/?form" class="order-button">${labelButtonEdit}</a><br>
+    <div class="button-panel">
+        <a href="${pageContext.request.contextPath}/chambers/remove/${chamber.id}"
+           class="order-button">${labelButtonRemove}</a>
+        <a href="${pageContext.request.contextPath}/chambers/${chamber.id}/?form"
+           class="order-button">${labelButtonEdit}</a><br>
+    </div>
+
 </div>
-
-        </div>

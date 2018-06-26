@@ -4,18 +4,18 @@
 
 <tiles-definitions>
     <definition extends="default" name="chambers">
-        <put-attribute name="title" value="Chambers" />
-        <put-attribute name="scripParameters" value="/WEB-INF/views/chamber/chamber-body-template.jsp" />
-        <put-attribute name="content" value="/WEB-INF/views/chamber/chambers.jsp" />
+        <put-attribute name="title" value="Chambers"/>
+        <put-attribute name="scripParameters" value="/WEB-INF/views/chamber/chamber-body-template.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/chamber/chambers.jsp"/>
     </definition>
 
     <definition extends="default" name="chambers/add">
-        <put-attribute name="title" value="Add chamber" />
-        <put-attribute name="content" value="/WEB-INF/views/chamber/add.jsp" />
+        <put-attribute name="title" value="Add chamber"/>
+        <put-attribute name="content" value="/WEB-INF/views/chamber/add.jsp"/>
     </definition>
 
     <definition extends="default" name="chambers/show">
-        <put-attribute name="content" value="/WEB-INF/views/chamber/show.jsp" />
+        <put-attribute name="content" value="/WEB-INF/views/chamber/show.jsp"/>
     </definition>
 </tiles-definitions>
 
