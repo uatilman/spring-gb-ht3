@@ -11,6 +11,9 @@
 <spring:message code="table_chamber_address" var="labelAddress"/>
 <spring:message code="table_chamber_action" var="labelAction"/>
 
+<spring:message code="button_edit" var="labelButtonEdit"/>
+<spring:message code="button_remove" var="labelButtonRemove"/>
+
 
         <div class="padding-site">
             <h2>${chamber.name}</h2>
@@ -22,8 +25,8 @@
             <p><strong>${labelAddress}:</strong> ${chamber.address}</p>
 
 <div class="button-panel">
-    <a href="${pageContext.request.contextPath}/chambers/remove/${chamber.id}" class="order-button">Remove</a>
-    <a href="${pageContext.request.contextPath}/chambers/${chamber.id}/?form" class="order-button">Edit</a><br>
+    <a href="${pageContext.request.contextPath}/chambers/remove/${chamber.id}" class="order-button">${labelButtonRemove}</a>
+    <a href="${pageContext.request.contextPath}/chambers/${chamber.id}/?form" class="order-button">${labelButtonEdit}</a><br>
 </div>
 
         </div>

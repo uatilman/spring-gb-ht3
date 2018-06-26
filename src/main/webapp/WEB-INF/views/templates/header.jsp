@@ -2,42 +2,48 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
+<spring:message code="menu_chambers_list" var="labelMenuChamberList"/>
+<spring:message code="menu_add_chamber" var="labelMenuAddChamber"/>
+<spring:message code="menu_other" var="labelMenuOther"/>
+
 
 <script>
+    var contextPath = "${pageContext.request.contextPath}";
     $(document).ready(
         function () {
             var currentLang = "${pageContext.response.locale}";
             var data = (currentLang === "ru") ? "en" : "ru";
-            $(document).find(".lang").html(data);
+            var langImgSrc = "${pageContext.request.contextPath}/resources/img/" + currentLang + ".png";
+            $(document).find(".lang-icon").attr("src", langImgSrc);
 
-            $(".lang").click(function () {
-                          $.ajax({
-                              url: contextPath,
-                              type: 'GET',
-                              data: {
-                                  lang: data
-                              },
-                              cache: false,
-                              success: function () {
-                                  location.reload();
-                              }
-                          });
+            $(".lang-icon").click(function () {
+                $.ajax({
+                    url: contextPath,
+                    type: 'GET',
+                    data: {
+                        lang: data
+                    },
+                    cache: false,
+                    success: function () {
+                        location.reload();
+                    }
+                });
             });
         }
     );
 </script>
 
 <header class="padding-site">
-    <%--<div class="lang"><a href="${pageContext.request.servletPath}?lang=ru"></a></div>--%>
     <div class="header">
         <nav>
-            <div class="lang"></div>
             <ul class="menu">
-                <li><a href="${pageContext.request.contextPath}/chambers">Chambers list</a></li>
-                <li><a href="${pageContext.request.contextPath}/chambers?form">Add chamber</a></li>
-                <li><a href="#">Page 3</a></li>
-                <li><a href="#">Page 4</a></li>
-                </li>
+                <li><a href="${pageContext.request.contextPath}/chambers">${labelMenuChamberList}</a></li>
+                <li><a href="${pageContext.request.contextPath}/chambers?form">${labelMenuAddChamber}</a></li>
+                <li><a href="#">${labelMenuOther}</a></li>
+                <li><a href="#">${labelMenuOther}</a></li>
+                <li><img class="lang-icon" src='' alt="lang"></li>
             </ul>
         </nav>
     </div>

@@ -80,6 +80,7 @@ body {
     font-size: 14px;
     font-weight: 300;
     text-decoration: none;
+    text-transform: uppercase;
 }
 
 .menu a:hover {
@@ -496,7 +497,7 @@ nav {
     text-transform: uppercase;
     letter-spacing: 3.6px;
     margin: 0 25px 0 0;
-    width: 120px;
+    width: 200px;
 }
 
 .order-button:hover {
@@ -1037,7 +1038,10 @@ button .svg-inline--fa.fa-w-14:hover {
     margin: 10px 185px;
 }
 
-/*
-.click-row:hover {
-    background-color: #00FFFF;
-}*/
+.lang-icon {
+    position: absolute;
+    width: 45px;
+    top: 10px;
+    left: 15px;
+    cursor: pointer;
+}

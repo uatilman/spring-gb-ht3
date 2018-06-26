@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.MessageSource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -24,6 +25,7 @@ import ru.tilman.repository.RegionRepository;
 import javax.validation.Valid;
 import java.beans.PropertyEditorSupport;
 import java.util.List;
+import java.util.Locale;
 
 
 @Controller
@@ -40,22 +42,30 @@ public class ChambersController {
     private final RegionRepository regionRepository;
     private DistrictRepository districtRepository;
 
+    private final MessageSource messageSource;
+
     @Autowired
     public ChambersController(
             @Qualifier("chamberRepository") ChamberRepository chamberRepository,
             @Qualifier("regionRepository") RegionRepository regionRepository,
-            @Qualifier("districtRepository") DistrictRepository districtRepository
-    ) {
+            @Qualifier("districtRepository") DistrictRepository districtRepository,
+            MessageSource messageSource) {
         this.chamberRepository = chamberRepository;
         this.regionRepository = regionRepository;
         this.districtRepository = districtRepository;
+        this.messageSource = messageSource;
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public String showChambersList(Model uiModel) {
+    public String showChambersList(Model uiModel, Locale locale) {
         List<Chamber> chamberList = chamberRepository.findAllByOrderByIdAsc();
         uiModel.asMap().clear();
-        uiModel.addAttribute(CHAMBERS_COUNT_ATTRIBUTE, String.format("Список палат (%s)", chamberList.size()))
+        ;
+        uiModel.addAttribute(
+                CHAMBERS_COUNT_ATTRIBUTE,
+                String.format(
+                        messageSource.getMessage("chambers.title", new Object[]{}, locale),
+                        chamberList.size()))
                 .addAttribute(CHAMBERS_ATTRIBUTE, chamberList);
         return "chambers";
     }
@@ -69,16 +79,20 @@ public class ChambersController {
     }
 
     @RequestMapping(params = "form", method = RequestMethod.GET)
-    public String getForm(Model uiModel) {
+    public String getForm(Model uiModel, Locale locale) {
         uiModel.addAttribute(CHAMBER_ATTRIBUTE, new Chamber())
-                .addAttribute(REGIONS_ATTRIBUTE, regionRepository.findAll());
+                .addAttribute(REGIONS_ATTRIBUTE, regionRepository.findAll())
+                .addAttribute(TITLE,
+                        messageSource.getMessage("add.title", new Object[]{}, locale));
         return "chambers/add";
     }
 
     @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
-    public String getForm(Model uiModel, @PathVariable("id") Long id) {
+    public String getForm(Model uiModel, @PathVariable("id") Long id, Locale locale) {
         uiModel.addAttribute(CHAMBER_ATTRIBUTE, chamberRepository.findById(id).get())
-                .addAttribute(REGIONS_ATTRIBUTE, regionRepository.findAll());
+                .addAttribute(REGIONS_ATTRIBUTE, regionRepository.findAll())
+                .addAttribute(TITLE,
+                        messageSource.getMessage("edit.title", new Object[]{}, locale));
         return "chambers/add";
     }
 
