@@ -83,7 +83,7 @@ freedom to share and change it.  By contrast, the GNU General Public
 License is intended to guarantee your freedom to share and change free
 software-to make sure the software is free for all its users.  This
 General Public License applies to most of the Free Software
-Foundation's software and to any other program whose authors commit to
+Foundation's software and to any other program whose users commit to
 using it.  (Some other Free Software Foundation software is covered by
 the GNU Lesser General Public License instead.)  You can apply it to
 your programs, too.
@@ -115,7 +115,7 @@ that everyone understands that there is no warranty for this free
 software.  If the software is modified by someone else and passed on, we
 want its recipients to know that what they have is not the original, so
 that any problems introduced by others will not reflect on the original
-authors' reputations.
+users' reputations.
 
   Finally, any free program is threatened constantly by software
 patents.  We wish to avoid the danger that redistributors of a free
@@ -375,7 +375,7 @@ free software-to make sure the software is free for all its users.
 
   This license, the Lesser General Public License, applies to some
 specially designated software packages-typically libraries-of the
-Free Software Foundation and other authors who decide to use it.  You
+Free Software Foundation and other users who decide to use it.  You
 can use it too, but we suggest you first think carefully about whether
 this license or the ordinary General Public License is the better
 strategy to use in any particular case, based on the explanations below.

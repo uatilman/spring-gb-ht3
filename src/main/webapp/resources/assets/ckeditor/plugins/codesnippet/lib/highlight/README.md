@@ -164,4 +164,4 @@ on a site.
 - URL:     http://highlightjs.org/
 
 For the license terms see LICENSE files.
-For authors and contributors see AUTHORS.en.txt file.
+For users and contributors see AUTHORS.en.txt file.

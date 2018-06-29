@@ -78,7 +78,7 @@ public class ChambersController {
         return "chambers/show";
     }
 
-    @RequestMapping(params = "form", method = RequestMethod.GET)
+    @RequestMapping(value = "add", params = "form", method = RequestMethod.GET)
     public String getForm(Model uiModel, Locale locale) {
         uiModel.addAttribute(CHAMBER_ATTRIBUTE, new Chamber())
                 .addAttribute(REGIONS_ATTRIBUTE, regionRepository.findAll())
@@ -87,7 +87,7 @@ public class ChambersController {
         return "chambers/add";
     }
 
-    @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
+    @RequestMapping(value = "add/{id}", params = "form", method = RequestMethod.GET)
     public String getForm(Model uiModel, @PathVariable("id") Long id, Locale locale) {
         uiModel.addAttribute(CHAMBER_ATTRIBUTE, chamberRepository.findById(id).get())
                 .addAttribute(REGIONS_ATTRIBUTE, regionRepository.findAll())
@@ -102,7 +102,7 @@ public class ChambersController {
         return "redirect:/chambers";
     }
 
-    @RequestMapping(params = "form", method = RequestMethod.POST)
+    @RequestMapping(value = "add", params = "form", method = RequestMethod.POST)
     public String save(@Valid Chamber chamber, BindingResult bindingResult, Model uiModel) {
 
         if (bindingResult.hasErrors()) {
@@ -119,7 +119,7 @@ public class ChambersController {
         return "redirect:/chambers";
     }
 
-    @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.POST)
+    @RequestMapping(value = "/{id}/add", params = "form", method = RequestMethod.POST)
     public String update(@Valid Chamber chamber, BindingResult bindingResult, Model uiModel) {
 
         if (bindingResult.hasErrors()) {

@@ -2,7 +2,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ page session="false" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<%@ page session="true" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 
 <spring:message code="table_chamber_id" var="labelId"/>
 <spring:message code="table_chamber_name" var="labelName"/>
@@ -27,7 +27,7 @@
     <div class="button-panel">
         <a href="${pageContext.request.contextPath}/chambers/remove/${chamber.id}"
            class="order-button">${labelButtonRemove}</a>
-        <a href="${pageContext.request.contextPath}/chambers/${chamber.id}/?form"
+        <a href="${pageContext.request.contextPath}/chambers/add/${chamber.id}/?form"
            class="order-button">${labelButtonEdit}</a><br>
     </div>
 
