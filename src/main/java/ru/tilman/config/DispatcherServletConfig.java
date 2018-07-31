@@ -20,7 +20,7 @@ import org.springframework.web.servlet.view.tiles3.TilesView;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan({"ru.tilman.controller"})
+@ComponentScan({"ru.tilman.controller", "ru.tilman.controller.faces", "ru.tilman.config.security"})
 @Import(AppConfig.class)
 public class DispatcherServletConfig implements WebMvcConfigurer {
 
@@ -76,5 +76,6 @@ public class DispatcherServletConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(localeChangeInterceptor());
     }
+
 
 }

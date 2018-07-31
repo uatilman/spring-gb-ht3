@@ -11,6 +11,8 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import ru.tilman.config.security.SecurityConfig;
+import ru.tilman.controller.faces.ChambersBean;
+import ru.tilman.repository.ChamberRepository;
 
 import javax.sql.DataSource;
 import java.util.Properties;
@@ -37,6 +39,7 @@ public class AppConfig {
         dataSource.setPassword(dataSourcePassword);
         return dataSource;
     }
+
 
     @Bean(name = "entityManagerFactory")
     public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean(

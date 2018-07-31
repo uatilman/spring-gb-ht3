@@ -17,9 +17,11 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 import ru.tilman.entity.Chamber;
+import ru.tilman.entity.Indicator;
 import ru.tilman.entity.Region;
 import ru.tilman.repository.ChamberRepository;
 import ru.tilman.repository.DistrictRepository;
+import ru.tilman.repository.IndicatorRepository;
 import ru.tilman.repository.RegionRepository;
 
 import javax.validation.Valid;
@@ -35,12 +37,14 @@ public class ChambersController {
     public final static String CHAMBERS_ATTRIBUTE = "chambers";
     public final static String CHAMBER_ATTRIBUTE = "chamber";
     public final static String REGIONS_ATTRIBUTE = "regions";
+    public final static String INDICATORS_ATTRIBUTE = "indicators";
     public final static String TITLE = "title";
     private final Logger logger = LoggerFactory.getLogger(ChambersController.class);
 
     private final ChamberRepository chamberRepository;
     private final RegionRepository regionRepository;
     private DistrictRepository districtRepository;
+    private IndicatorRepository indicatorRepository;
 
     private final MessageSource messageSource;
 
@@ -49,24 +53,28 @@ public class ChambersController {
             @Qualifier("chamberRepository") ChamberRepository chamberRepository,
             @Qualifier("regionRepository") RegionRepository regionRepository,
             @Qualifier("districtRepository") DistrictRepository districtRepository,
+            @Qualifier("indicatorRepository") IndicatorRepository indicatorRepository,
             MessageSource messageSource) {
         this.chamberRepository = chamberRepository;
         this.regionRepository = regionRepository;
         this.districtRepository = districtRepository;
+        this.indicatorRepository = indicatorRepository;
         this.messageSource = messageSource;
     }
 
     @RequestMapping(method = RequestMethod.GET)
     public String showChambersList(Model uiModel, Locale locale) {
         List<Chamber> chamberList = chamberRepository.findAllByOrderByIdAsc();
+        List<Indicator> indicatorList = indicatorRepository.findAll();
         uiModel.asMap().clear();
-        ;
+
         uiModel.addAttribute(
                 CHAMBERS_COUNT_ATTRIBUTE,
                 String.format(
                         messageSource.getMessage("chambers.title", new Object[]{}, locale),
                         chamberList.size()))
-                .addAttribute(CHAMBERS_ATTRIBUTE, chamberList);
+                .addAttribute(CHAMBERS_ATTRIBUTE, chamberList)
+                .addAttribute(INDICATORS_ATTRIBUTE, indicatorList);
         return "chambers";
     }
 
