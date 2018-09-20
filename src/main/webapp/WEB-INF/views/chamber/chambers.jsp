@@ -22,13 +22,6 @@
 
 
 <div class="padding-site">
-
-<%--
-    <c:forEach items="${indicators}" var="indicator">
-        ${indicator.name}<br>
-    </c:forEach>
---%>
-
     <h2 class="table-head">${chambersCount}</h2>
     <br>
     <table class="chamber-table">

@@ -27,7 +27,7 @@
     <div class="button-panel">
         <a href="${pageContext.request.contextPath}/chambers/remove/${chamber.id}"
            class="order-button">${labelButtonRemove}</a>
-        <a href="${pageContext.request.contextPath}/chambers/add/${chamber.id}?form"
+        <a href="${pageContext.request.contextPath}/chambers/add/${chamber.id}/?form"
            class="order-button">${labelButtonEdit}</a><br>
     </div>
 

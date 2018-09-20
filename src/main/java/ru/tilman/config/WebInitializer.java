@@ -1,16 +1,12 @@
 package ru.tilman.config;
 
-import org.springframework.core.annotation.Order;
-import org.springframework.web.context.ContextLoaderListener;
-import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 import ru.tilman.config.security.SecurityConfig;
+import ru.tilman.config.security.SecurityWebApplicationInitializer;
 
 import javax.servlet.Filter;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
 
 public class WebInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
@@ -49,13 +45,8 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
 
         return new Filter[]{characterEncodingFilter, httpMethodFilter};
 
+
     }
 
-    // TODO: 12.07.18 добавлено для реализации jsf. Неудается совмместить с SecurityWebApplicationInitializer
-//    @Override
-//    public void onStartup(ServletContext sc) throws ServletException {
-//        AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
-//        sc.addListener(new ContextLoaderListener(context));
-//    }
 
 }

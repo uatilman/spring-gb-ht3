@@ -8,7 +8,6 @@
 <spring:message code="menu_chambers_list" var="labelMenuChamberList"/>
 <spring:message code="menu_add_chamber" var="labelMenuAddChamber"/>
 <spring:message code="menu_other" var="labelMenuOther"/>
-<spring:message code="menu_jsf" var="labelMenuJsf"/>
 
 
 <script>
@@ -43,7 +42,7 @@
             <ul class="menu">
                 <li><a href="${pageContext.request.contextPath}/chambers">${labelMenuChamberList}</a></li>
                 <li><a href="${pageContext.request.contextPath}/chambers/add?form">${labelMenuAddChamber}</a></li>
-                <li><a href="${pageContext.request.contextPath}/test.xhtml">${labelMenuJsf}</a></li>
+                <li><a href="#">${labelMenuOther}</a></li>
                 <li><a href="#">${labelMenuOther}</a></li>
 
                 <sec:authorize access="isAnonymous()">

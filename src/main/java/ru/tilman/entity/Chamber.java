@@ -4,7 +4,6 @@ import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.util.List;
 
 @Entity
 @Table(name = "chambers")
@@ -32,12 +31,6 @@ public class Chamber implements Serializable {
 
     @Column(name = "urlPortal")
     private String urlPortal;
-
-    // TODO: 12.07.18
- /*   @OneToMany
-    private List<Indicator> indicators;
-    private List<Reports> reportsList;*/
-
 
     public Long getId() {
         return id;
