@@ -4,6 +4,6 @@
 
 <tiles-definitions>
     <definition extends="default" name="home/main">
-        <put-attribute name="content" value="/WEB-INF/views/home/man.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/home/man.jsp" />
     </definition>
 </tiles-definitions>

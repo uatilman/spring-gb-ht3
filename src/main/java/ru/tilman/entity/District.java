@@ -1,6 +1,7 @@
 package ru.tilman.entity;
 
 import javax.persistence.*;
+
 import java.io.Serializable;
 
 import static javax.persistence.GenerationType.SEQUENCE;
