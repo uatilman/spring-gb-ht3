@@ -40,9 +40,8 @@ public class ChambersController {
 
     private final ChamberRepository chamberRepository;
     private final RegionRepository regionRepository;
-    private DistrictRepository districtRepository;
-
     private final MessageSource messageSource;
+    private DistrictRepository districtRepository;
 
     @Autowired
     public ChambersController(

@@ -27,11 +27,7 @@
     <div class="button-panel">
         <a href="${pageContext.request.contextPath}/chambers/remove/${chamber.id}"
            class="order-button">${labelButtonRemove}</a>
-<<<<<<< HEAD
         <a href="${pageContext.request.contextPath}/chambers/${chamber.id}/?form"
-=======
-        <a href="${pageContext.request.contextPath}/chambers/add/${chamber.id}?form"
->>>>>>> parent of b9c86c9... Зафиксирована стабильная версия
            class="order-button">${labelButtonEdit}</a><br>
     </div>
 
