@@ -4,7 +4,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 
-<%@ page session="true" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<%@ page session="false" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>

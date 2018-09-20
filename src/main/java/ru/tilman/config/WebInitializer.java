@@ -3,8 +3,6 @@ package ru.tilman.config;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
-import ru.tilman.config.security.SecurityConfig;
-import ru.tilman.config.security.SecurityWebApplicationInitializer;
 
 import javax.servlet.Filter;
 
@@ -14,7 +12,7 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
     protected Class<?>[] getRootConfigClasses() {
 
         //возвращает корневую конфигурации приложения (сервисы и дао-уровень)
-        return new Class<?>[]{AppConfig.class, SecurityConfig.class};
+        return new Class<?>[]{AppConfig.class};
     }
 
     @Override
